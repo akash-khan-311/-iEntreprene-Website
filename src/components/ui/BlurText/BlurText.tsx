@@ -1,6 +1,5 @@
 'use client';
 
-import { AnimationSnapshot, BlurTextProps } from '@/type';
 import { motion } from 'framer-motion';
 import React, {
   useEffect,
@@ -9,6 +8,7 @@ import React, {
   useMemo,
   CSSProperties,
 } from 'react';
+import { AnimationSnapshot, BlurTextProps } from './BlurTextType';
 
 
 const buildKeyframes = (

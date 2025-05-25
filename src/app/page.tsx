@@ -1,19 +1,11 @@
-import BlurText from "@/components/ui/BlurText";
+import Hero from "@/components/Home/Hero";
 
-
-
-export default function Home() {
+const HomePage = () => {
   return (
-    <>
-    <h1 className="text-4xl">Akash Khan</h1>
-    <BlurText text="Hi , This is Akash Khan From Bangladesh"
-    delay={200}
-    animateBy="words"
-    direction="top"
-    className="text-5xl font-semibold"
-    
-    />
-    
-    </>
+    <div>
+      <Hero/>
+    </div>
   );
-}
+};
+
+export default HomePage;
