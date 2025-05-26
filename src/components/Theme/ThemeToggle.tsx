@@ -1,34 +1,26 @@
-"use client";
-import React, { useEffect, useState } from "react";
+// components/ThemeToggle.tsx
+"use client"; // Required for client-side interactivity
+
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 
 
-const ThemeSwitcher = () => {
-  const [theme, setTheme] = useState("dark");
+export default function ThemeToggle() {
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    // Check if window is defined to ensure this runs only in the browser
-    if (typeof window !== "undefined") {
-      const storedTheme = localStorage.getItem("theme");
-      setTheme(storedTheme ? storedTheme : "dark");
-    }
-  }, []);
+  // Ensure UI is hydrated before showing toggle
+  useEffect(() => setMounted(true), []);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem("theme", theme);
-      const htmlElement = document.querySelector("html");
-      if (htmlElement) {
-        htmlElement.setAttribute("class", theme);
-      }
-    }
-  }, [theme]);
+  if (!mounted) return null;
 
-  const handleSwitchTheme = () => {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
-    console.log(theme);
+  const handleToggle = () => {
+    setTheme(theme === "light" ? "dark" : "light");
   };
+
   return (
-      <div>
+
+   <div>
           <label className="switch ">
             <span className="sun">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -45,13 +37,12 @@ const ThemeSwitcher = () => {
             </span>
             <input
               type="checkbox"
-              checked={theme === "light" ? false : true}
-              onChange={handleSwitchTheme}
+              checked={theme === "light" ? true : false}
+           onChange={handleToggle}
               className="input"
             />
             <span className="slider" />
           </label>
         </div>
   );
-};
-export default ThemeSwitcher;
+}

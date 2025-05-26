@@ -17,12 +17,12 @@ interface SplitTextProps {
 const SplitText: React.FC<SplitTextProps> = ({
   text = "",
   className = "",
-  delay = 100,
+  delay = 15,
   animationFrom = { opacity: 0, transform: "translate3d(0,40px,0)" },
   animationTo = { opacity: 1, transform: "translate3d(0,0,0)" },
   threshold = 0.1,
-  rootMargin = "-100px",
-  textAlign = "center",
+  rootMargin = "-50px",
+  textAlign = "left",
   onLetterAnimationComplete,
 }) => {
   const words = text.split(" ").map((w) => w.split(""));
@@ -76,8 +76,8 @@ const SplitText: React.FC<SplitTextProps> = ({
   return (
     <p
       ref={ref}
-      className={`split-parent overflow-hidden inline ${className}`}
-      style={{ textAlign: textAlign }}
+      className={` leading-4 ${className}`}
+      style={{ textAlign: textAlign , lineHeight: "1.2em"}}
     >
       {words.map((word, wIdx) => (
         <span key={wIdx} className="inline-block whitespace-nowrap">
@@ -92,6 +92,7 @@ const SplitText: React.FC<SplitTextProps> = ({
                   {
                     ...springs[index],
                     display: "inline-block",
+               
                     willChange: "transform, opacity",
                   } as unknown as Record<string, SpringValue | string | number>
                 }
@@ -100,7 +101,7 @@ const SplitText: React.FC<SplitTextProps> = ({
               </animated.span>
             );
           })}
-          <span className="inline-block w-[0.3em]">&nbsp;</span>
+          <span className="inline-block ">&nbsp;</span>
         </span>
       ))}
     </p>

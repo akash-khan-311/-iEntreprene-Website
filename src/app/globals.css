@@ -23,7 +23,7 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-    background-color: #F31559;
+    background-color: #F28522;
     border-radius: 100px;
     -webkit-border-radius: 100px;
     -moz-border-radius: 100px;
@@ -177,3 +177,36 @@ body::-webkit-scrollbar-thumb {
     }
 }
 
+
+/* app/globals.css */
+:root, .light {
+  --background: #ffffff;
+  --foreground: #000000;
+}
+
+.dark {
+  --background: #212428;
+  --foreground: #ffffff;
+}
+
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  min-height: 100vh;
+}
+
+/* Smooth transitions for all properties */
+body, body * {
+  transition:     background-color 0.5s ease,    color 0.5s ease,    border-color 0.5s ease,    fill 0.5s ease,    stroke 0.5s ease;
+
+}
+
+.custom-before::before {
+  @apply absolute z-[-1] w-full left-1/2 bottom-0 rounded-[6px];
+  height: calc(100% - 130px);
+  transform: translateX(-50%);
+  content: "";
+  background: var(--background-color-1);
+  box-shadow: var(--shadow-1);
+}

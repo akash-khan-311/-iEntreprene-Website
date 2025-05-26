@@ -11,8 +11,8 @@ const ActiveLinks = ({ path , children } : { path: string; children: React.React
     <>
       <Link
         className={`${
-          isActive && "text-gray-200 dark:text-gray-800 after:w-full"
-        } inline-block after:contents[""] after:block after:w-0 after:h-[2px] after:bg-gray-500 dark:after:bg-gray-200 after:transition-all after:duration-300 after:hover:w-full  transition-colors hover:text-gray-500`}
+          isActive && "text-slate-950 dark:text-[#f28523] after:w-full"
+        } inline-block after:contents[""] after:block after:w-0 after:h-[2px] after:bg-[#f28523]  after:transition-all after:duration-300 after:hover:w-full  transition-colors hover:text-[#f28523]`}
         href={path}
       >
         {children}

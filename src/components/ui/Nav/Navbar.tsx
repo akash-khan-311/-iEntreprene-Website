@@ -1,5 +1,6 @@
 import ActiveLinks from "@/components/Shared/ActiveLinks";
-import ThemeSwitcher from "@/components/ThemeSwitcher/ThemeSwitcher";
+import ThemeToggle from "@/components/Theme/ThemeToggle";
+// import ThemeSwitcher from "@/components/ThemeSwitcher/ThemeSwitcher";
 
 //  <ActiveLinks path={link.href}>{link.name}</ActiveLinks>
 const NavItems = [
@@ -11,23 +12,25 @@ const NavItems = [
 
 const Navbar = () => {
   return (
-    <div className="dark:bg-gray-300 bg-gray-800 py-3 transition-all duration-500">
+    <div className="fixed block w-full top-0">
+      <div className=" py-3">
       <div className="container mx-auto px-3 md:px-0">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-4xl font-semibold">Logo</h1>
+          <h1 className="text-4xl font-semibold text-[#f28523]">Logo</h1>
         </div>
         <div className="flex items-center gap-x-10">
-          <ul className="flex gap-x-5 text-white dark:text-gray-800">
+          <ul className="flex gap-x-5 text-slate-950 dark:text-gray-100">
             {NavItems.map((link) => (
               <li key={link.name} className="text-xl">
                 <ActiveLinks path={link.path}>{link.name}</ActiveLinks>
               </li>
             ))}
           </ul>
-          <ThemeSwitcher/>
+          <ThemeToggle />
         </div>
       </div>
+    </div>
     </div>
     </div>
   );
